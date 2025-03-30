@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+  entry: CollectionEntry<"stories">;
+};
+
+const { entry } = Astro.props;
+---
+
+<a
+  href={`/${entry.collection}/${entry.id}`}
+  class="arrow-card group"
+>
+  <div class="arrow-card-content">
+    <div class="arrow-card-title">
+      {entry.data.title}
+    </div>
+    <div class="arrow-card-description">
+      {entry.data.description}
+    </div>
+  </div>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    class="arrow-card-icon"
+  >
+    <line
+      x1="5"
+      y1="12"
+      x2="19"
+      y2="12"
+      class="arrow-line"
+    ></line>
+    <polyline
+      points="12 5 19 12 12 19"
+      class="arrow-head"
+    ></polyline>
+  </svg>
+</a>

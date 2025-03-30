@@ -1,0 +1,28 @@
+---
+// No longer using joinClasses utility
+
+type Props = {
+  href: string;
+  external?: boolean;
+  underline?: boolean;
+  group?: boolean;
+  class?: string;
+};
+
+const {
+  href,
+  external,
+  underline = true,
+  group = false,
+  ...rest
+} = Astro.props;
+---
+
+<a
+  href={href}
+  target={external ? "_blank" : "_self"}
+  class={`site-link ${underline ? 'with-underline' : ''} ${group ? 'group' : ''} ${Astro.props.class || ''}`}
+  {...rest}
+>
+  <slot />
+</a>

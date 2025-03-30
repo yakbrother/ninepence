@@ -1,0 +1,49 @@
+---
+import { getCollection } from "astro:content";
+import Link from "./Link.astro";
+
+const allPosts = await getCollection("stories");
+const allTags = allPosts.map((post) => post.data.tags || []).flat();
+
+// Count occurrences of each tag
+const tagCount = allTags.reduce((acc, tag) => {
+  acc[tag] = (acc[tag] || 0) + 1;
+  return acc;
+}, {} as Record<string, number>);
+
+// Convert to array of objects for sorting
+const tagArray = Object.entries(tagCount).map(([name, count]) => ({
+  name,
+  count,
+}));
+
+// Sort by count (descending)
+tagArray.sort((a, b) => b.count - a.count);
+---
+
+<div class="tag-cloud">
+  {
+    tagArray.map((tag) => (
+      <Link
+        href={`/tags/${tag.name}/`}
+        class="tag-link"
+        aria-label={`${tag.count} posts tagged with ${tag.name}`}
+      >
+        {tag.name} <span class="tag-count">({tag.count})</span>
+      </Link>
+    ))
+  }
+</div>
+
+<style>
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+  .tag-count {
+    font-size: 0.875em;
+    opacity: 0.8;
+  }
+</style>

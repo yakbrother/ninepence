@@ -1,0 +1,27 @@
+---
+interface Props {
+  type?: "default" | "info" | "warning" | "error";
+}
+const { type = "default" } = Astro.props;
+let emoji = "💡";
+if (type === "info") {
+  emoji = "ℹ️";
+} else if (type === "warning") {
+  emoji = "⚠️";
+} else if (type === "error") {
+  emoji = "🚨";
+}
+
+const baseClass = "callout";
+const typeClasses = {
+  default: "callout-default",
+  info: "callout-info",
+  warning: "callout-warning",
+  error: "callout-error",
+};
+---
+
+<div class={`not-prose ${baseClass} ${typeClasses[type]}`}>
+  <span class="callout-emoji">{emoji}</span>
+  <slot />
+</div>

@@ -1,62 +1,63 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+
 ---
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage="/blog-placeholder-about.jpg"
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+<Layout title="About" description="More About Virgil">
+  <Container>
+    <section>
+      <h1>About</h1>
+      <p>My name is Tim Eaton, but all my friends call me Virgil. It's nice to have a real name that I chose, one that I always dreamt I was called. I stick with Timothy for work and legal reasons, but Virgil is way more fun.</p>
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+        <figure>
+    <img src="/assets/virgil.jpg" alt="The auther, Virgil, with a small beard and casual suit" />
+    <figcaption>The author in 2025, still stuck in a wheelchair after two years of operations.</figcaption>
+  </figure>
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+  <p>A few things to know about me: I was raised extremely right-wing, and while I still have some of that libertarian knee-jerk attitude, I've moved far to the left over the time and will happily stand up for the rights of all people (<em>yes, even you, Fred, damn you</em>). Most of my life I spent with vaguely anarchist tendencies, but I found a home in Switzerland, and I'm enjoying the socialism that makes it easy to live a free and happy life in the middle class, where my taxes help the country instead of being spent on endless war.</p>
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+  <blockquote>
+    "Your assumptions are your windows on the world. Scrub them off every once in a while, or the light won't come in."― Isaac Asimov
+  </blockquote>
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
+  <p>I have been a writer and a programmer for most of my life, but I've had many jobs, from volunteer fireman to disaster relief, barista to chef, street musician to animal caretaker, day laborer to director to teacher - all around the world. During this time I've met many people and gathered many stories to tell.</p>
+
+  <p>As for the rest, you'll discover that over time. I can't ever say no to an adventure, but recently events have been keeping me in a wheelchair, so I'm going to sit and write about people and happenstances. Please enjoy!</p>
+
+  <figure>
+  <img src="/assets/baja.jpg" alt="The auther, Virgil, in 2015 with a much larger beard, living outside on the Baja Peninsula" />
+  <figcaption>The author living on the beach in Baja, c. 2015</figcaption>
+</figure>
+
+  <blockquote>
+    "The love of wilderness is more than a hunger for what is always beyong reach; it is also an expression of loyalty to the earth, the earth which bore us and sustains us, the only paradise we shall ever know, the only paradise we ever need, if only we had the eyes to see." - Edward Abbey
+  </blockquote>
+
+  <h3>A note on AI:</h3>
+  <p>I never use AI to write, but I have found one prompt that I find very engaging and will continue to use.</p>
+
+  <blockquote><em>
+    Acting as an editor, are you engaged by this story? Are there any confusing parts? If so, please explain.</em>
+  </blockquote>
+
+  <p>The response is great, like notes from an editor. I find this to be ethical, because I use the notes (or ignore them) to rewrite entirely in my own words. I never use it to change or generate content.</p>
+
+  <h3>Colophon:</h3>
+  <p>I designed this site myself to be fluid and easy on the eyes, using <a href="https://astro.build">Astro</a> as the engine and <a href="https://vercel.com/">Vercel</a> for hosting. The main fonts are <a href="https://fonts.google.com/specimen/iA+Writer+Mono">iA Writer Mono</a> for readability and <a href="https://www.freefonts.io/bygonest-font/">Bygonest</a> for the header. I have an <a href="/rss.xml">RSS feed</a> if you'd rather view it in your own preferred program.</p>
+
+  <p>If you or anyone you know need design or programming help, I charge on a sliding scale - anything from cups of coffee and a <em>pain au chocolat</em> for bit of help, to hard Euros for corporate work. You can find my  freelancer site at <a href="https://timeaton.dev">timeaton.dev</a>.</p>
+  
+  <p>I'm more than happy to answer any questions you might have about building your own Astro site!</p>
+
+  <figure>
+  <img src="/assets/swiss.jpg" alt="The author and his amazing wife sipping a bit of liquid warmth somewhere near Jungfrau, Switzerland, c. 2019" />
+  <figcaption>The author and his amazing wife sipping a bit of liquid warmth somewhere near Jungfrau, Switzerland, c. 2019</figcaption>
+</figure>
+
+
+
+
+    </section>
+  </Container>
 </Layout>

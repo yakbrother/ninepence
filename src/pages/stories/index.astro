@@ -1,0 +1,55 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import { STORIES } from "@consts";
+
+const data = (await getCollection("stories"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+type Acc = {
+  [year: string]: CollectionEntry<"stories">[];
+};
+
+const posts = data.reduce((acc: Acc, post) => {
+  const year = post.data.date.getFullYear().toString();
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(post);
+  return acc;
+}, {});
+
+const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
+---
+
+<Layout title={STORIES.TITLE} description={STORIES.DESCRIPTION}>
+  <Container>
+    <aside data-pagefind-ignore>
+      <div class="stories-container">
+        <div class="stories-years-container">
+          {
+            years.map((year) => (
+              <section class="animate stories-year-section">
+                <div class="stories-year-heading">
+                  {year}
+                </div>
+                <div>
+                  <ul class="not-prose stories-list">
+                    {posts[year].map((post) => (
+                      <li>
+                        <ArrowCard entry={post} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </section>
+            ))
+          }
+        </div>
+      </div>
+    </aside>
+  </Container>
+</Layout>

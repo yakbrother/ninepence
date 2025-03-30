@@ -1,0 +1,31 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+
+const posts = await getCollection("stories", ({ data }) => !data.draft);
+const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))].sort();
+---
+
+<Layout title="Tags" description="List of tags used.">
+  <Container>
+    <div class="tags-container">
+      <h1 class="animate tags-heading">All Tags</h1>
+      <div class="animate tags-list">
+        {
+          tags.map((tag) => (
+            <a
+              href={`/tags/${tag}`}
+              class="tag-link"
+            >
+              {tag}{" "}
+              <span class="tag-count">
+                ({posts.filter((post) => post.data.tags?.includes(tag)).length})
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </Container>
+</Layout>
