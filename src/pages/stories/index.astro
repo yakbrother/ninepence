@@ -36,15 +36,22 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
                 <div class="stories-year-heading">
                   {year}
                 </div>
-                <div>
-                  <ul class="not-prose stories-list">
-                    {posts[year].map((post) => (
-                      <li>
-                        <ArrowCard entry={post} />
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <ul class="story-grid">
+                  {posts[year].map((post) => (
+                    <li class="story-item">
+                      <a href={`/${post.collection}/${post.id}`} class="story-link">
+                        <h3 class="story-item-title">{post.data.title}</h3>
+                        <div class="story-item-date">
+                          {new Date(post.data.date).toLocaleDateString('en-UK', {
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric'
+                          })}
+                        </div>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </section>
             ))
           }

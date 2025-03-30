@@ -25,7 +25,7 @@ export const NOW: Metadata = {
 export const STORIES: Metadata = {
   TITLE: "Stories",
   DESCRIPTION:
-    "A collection (mostly true) life stories, as heard around decades of campfires and barstools.",
+    "A collection of Mostly True life stories, as heard around decades of campfires and barstools.",
 };
 
 export const SOCIALS: Socials = [

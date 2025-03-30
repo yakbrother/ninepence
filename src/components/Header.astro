@@ -4,20 +4,17 @@ import Link from "@components/Link.astro";
 import { SITE } from "@consts";
 ---
 
-<header transition:persist>
-  <Container>
+<header transition:persist class="header-full-width">
+  <div class="header-inner">
     <div class="header-container">
       <Link href="/" underline={false}>
         <div class="site-title">
           {SITE.TITLE}<br />
-          <span class="subtitle">stories by Virgil (Tim) Eaton</span>
+          <span class="subtitle">stories by virgil eaton</span>
         </div>
       </Link>
       <nav class="main-nav">
         <Link href="/stories">stories</Link>
-        <span>
-          {`/`}
-        </span>
         <Link href="/about">about</Link>
         <span>
           {`/`}
@@ -26,11 +23,7 @@ import { SITE } from "@consts";
         <span>
           {`/`}
         </span>
-        <button
-          id="magnifying-glass"
-          aria-label="Search"
-          class="search-button"
-        >
+        <button id="magnifying-glass" aria-label="Search" class="search-button">
           <svg
             height="16"
             stroke-linejoin="round"
@@ -47,5 +40,5 @@ import { SITE } from "@consts";
         </button>
       </nav>
     </div>
-  </Container>
+  </div>
 </header>
