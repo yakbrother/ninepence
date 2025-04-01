@@ -1,5 +1,5 @@
 ---
-title: "That One Time We Missed the Murdering Coyotes"
+title: "That One Time We Missed the Coyotes"
 description: "We were well armed and ready to go, but that didn't stop the coyotes from attacking the chickens that night in Colorado."
 date: "2025-02-24"
 tags: ["colorado", "chickens", "coyotes", "usa"]

@@ -71,63 +71,32 @@ const { title, description, image = "/astro-micro.jpg" } = Astro.props;
     const backToPrev = document.getElementById("back-to-prev");
     backToPrev?.addEventListener("click", () => window.history.back());
 
-    const lightThemeButton = document.getElementById("light-theme-button");
-    lightThemeButton?.addEventListener("click", () => {
-      localStorage.setItem("theme", "light");
-      toggleTheme(false);
-      updateThemeButtons();
+    // Set up the theme toggle checkbox
+    const themeToggleCheckbox = document.getElementById("theme-toggle-checkbox");
+    
+    // Initialize the checkbox state based on the current theme
+    const currentTheme = localStorage.getItem("theme") || "light";
+    themeToggleCheckbox.checked = currentTheme === "dark";
+    
+    // Add event listener to the checkbox
+    themeToggleCheckbox?.addEventListener("change", () => {
+      if (themeToggleCheckbox.checked) {
+        localStorage.setItem("theme", "dark");
+        toggleTheme(true);
+      } else {
+        localStorage.setItem("theme", "light");
+        toggleTheme(false);
+      }
     });
 
-    const darkThemeButton = document.getElementById("dark-theme-button");
-    darkThemeButton?.addEventListener("click", () => {
-      localStorage.setItem("theme", "dark");
-      toggleTheme(true);
-      updateThemeButtons();
-    });
-
-    const systemThemeButton = document.getElementById("system-theme-button");
-    systemThemeButton?.addEventListener("click", () => {
-      localStorage.setItem("theme", "system");
-      toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
-      updateThemeButtons();
-    });
-
-    window
-      .matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", (event) => {
-        if (localStorage.theme === "system") {
-          toggleTheme(event.matches);
-        }
-      });
+    // System theme preference is no longer used
 
     document.addEventListener("scroll", onScroll);
   }
 
+  // No longer needed as we're using a checkbox toggle
   function updateThemeButtons() {
-    const theme = localStorage.getItem("theme");
-    const lightThemeButton = document.getElementById("light-theme-button");
-    const darkThemeButton = document.getElementById("dark-theme-button");
-    const systemThemeButton = document.getElementById("system-theme-button");
-
-    function removeActiveButtonTheme(button) {
-      button?.classList.remove("active-theme-button");
-    }
-
-    function addActiveButtonTheme(button) {
-      button?.classList.add("active-theme-button");
-    }
-
-    removeActiveButtonTheme(lightThemeButton);
-    removeActiveButtonTheme(darkThemeButton);
-    removeActiveButtonTheme(systemThemeButton);
-
-    if (theme === "light") {
-      addActiveButtonTheme(lightThemeButton);
-    } else if (theme === "dark") {
-      addActiveButtonTheme(darkThemeButton);
-    } else {
-      addActiveButtonTheme(systemThemeButton);
-    }
+    // This function is kept for backward compatibility but is no longer used
   }
 
   function animate() {
@@ -185,12 +154,13 @@ const { title, description, image = "/astro-micro.jpg" } = Astro.props;
   }
 
   function preloadTheme() {
-    const userTheme = localStorage.theme;
-
-    if (userTheme === "light" || userTheme === "dark") {
-      toggleTheme(userTheme === "dark");
-    } else {
-      toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
+    const userTheme = localStorage.theme || "light"; // Default to light mode
+    toggleTheme(userTheme === "dark");
+    
+    // Update checkbox state
+    const themeToggleCheckbox = document.getElementById("theme-toggle-checkbox");
+    if (themeToggleCheckbox) {
+      themeToggleCheckbox.checked = userTheme === "dark";
     }
   }
 

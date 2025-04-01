@@ -2,7 +2,12 @@
 title: "That Time I Tried a Black Cab in Sichuan"
 description: "How we happned to get stuck in the forest, surrounded by Chinese rifles."
 date: "2025-02-08"
-tags: ["china", "tibet", "cops", "international"]
+tags: 
+    - china
+    - tibet
+    - cops
+    - international
+    - something new
 draft: false
 ---
 

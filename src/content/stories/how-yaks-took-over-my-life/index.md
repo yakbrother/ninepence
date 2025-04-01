@@ -10,6 +10,8 @@ tags:
 featured: false
 ---
 
+import yakWriter from './yak-writing.jpeg';
+
 Back in my New Mexico home, many friends — fair-haired friends especially — had told me stories about China.
 
 They talked of train trips in the 80s, during which they met people who had never seen a white person, and those people spent much of the trip trying to hold their hands and stroke their hair.
@@ -29,11 +31,8 @@ So he went back to the original jokes. When we passed the many yaks in the Himal
 I was just young and enjoyed the casual camaraderie. We stopped for a smoke break at 5,000 meters, and I smoked just in a t-shirt. They were very impressed by that, the Tibetans commenting that I had a good body. The driver proudly said to the onlookers, "Yes, he is an American yak!"
 
 <figure>
-    <center>
-        <img src="/posts/yak-writing.jpeg"
-             alt="Cartoon image of Yak with glasses, writing">
-        <figcaption>AI image created by the author with OpenArt.ai</figcaption>
-    </center>
+    <img src={yakWriter} alt="Cartoon image of Yak with glasses, writing">
+    <figcaption>AI image created by the author with OpenArt.ai</figcaption>
 </figure>
 
 Now that was a fun story, but this wasn't the first time I had run into yaks. The first time was far more action-oriented, back at home in rural Mexico at around 3,000 meters This started when a neighboring rancher purchased a number of feral, illegally transported yaks and brought them into the area. Something about them needing additional paperwork and fees to cross state lines. If there's anything true about New Mexicans, it's that they hate both paperwork and fees if a little back-road driving will do the trick.

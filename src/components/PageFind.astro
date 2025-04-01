@@ -54,15 +54,16 @@ import Search from "astro-pagefind/components/Search";
     openPagefind();
   });
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "/") {
-      e.preventDefault();
-      openPagefind();
-    } else if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-      e.preventDefault();
-      openPagefind();
-    }
-  });
+  // Search keyboard shortcuts disabled
+  // document.addEventListener("keydown", (e) => {
+  //   if (e.key === "/") {
+  //     e.preventDefault();
+  //     openPagefind();
+  //   } else if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+  //     e.preventDefault();
+  //     openPagefind();
+  //   }
+  // });
 
   // close pagefind
   document.addEventListener("keydown", (e) => {
