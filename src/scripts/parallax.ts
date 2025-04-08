@@ -1,9 +1,9 @@
 // Enhanced parallax scrolling effect for the footer
 document.addEventListener('DOMContentLoaded', () => {
-  const parallaxFooter = document.querySelector('.popup-footer-container');
-  const parallaxBackground = document.querySelector('.popup-footer-background');
-  const parallaxContent = document.querySelector('.popup-footer-content');
-  const mainContent = document.querySelector('main');
+  const parallaxFooter = document.querySelector('.popup-footer-container') as HTMLElement;
+  const parallaxBackground = document.querySelector('.popup-footer-background') as HTMLElement;
+  const parallaxContent = document.querySelector('.popup-footer-content') as HTMLElement;
+  const mainContent = document.querySelector('main') as HTMLElement;
   
   if (!parallaxFooter || !parallaxBackground || !parallaxContent || !mainContent) return;
   
@@ -12,19 +12,19 @@ document.addEventListener('DOMContentLoaded', () => {
   parallaxFooter.style.transform = 'translateY(100px)';
   
   // Function to handle scroll effect
-  function handleScroll() {
-    const scrollPosition = window.scrollY;
-    const windowHeight = window.innerHeight;
-    const documentHeight = document.body.scrollHeight;
-    const footerTop = parallaxFooter.getBoundingClientRect().top + window.scrollY;
-    const distanceFromBottom = documentHeight - (scrollPosition + windowHeight);
+  function handleScroll(): void {
+    const scrollPosition: number = window.scrollY;
+    const windowHeight: number = window.innerHeight;
+    const documentHeight: number = document.body.scrollHeight;
+    const footerTop: number = parallaxFooter.getBoundingClientRect().top + window.scrollY;
+    const distanceFromBottom: number = documentHeight - (scrollPosition + windowHeight);
     
     // Start showing the footer when we're close to it
-    const footerVisibilityStart = 500; // px before the footer - increased for earlier reveal
+    const footerVisibilityStart: number = 500; // px before the footer - increased for earlier reveal
     
     if (footerTop - scrollPosition - windowHeight < footerVisibilityStart) {
       // Calculate how far into the visibility zone we are (0 to 1)
-      const visibilityRatio = Math.min(
+      const visibilityRatio: number = Math.min(
         1, 
         (footerVisibilityStart - (footerTop - scrollPosition - windowHeight)) / footerVisibilityStart
       );

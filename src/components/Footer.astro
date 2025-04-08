@@ -13,8 +13,8 @@ import BackToTop from "@components/BackToTop.astro";
         <!-- Quote Column -->
         <div class="popup-footer-column quote">
           <div class="writing-quote">
-            <p class="quote-text"></p>
-            <p class="quote-author"></p>
+            <p class="quote-text">"When I write, I feel like an armless, legless man with a crayon in his mouth."</p>
+            <p class="quote-author">— Kurt Vonnegut</p>
           </div>
           <div class="popup-footer-copyright">
             &copy; {new Date().getFullYear()} Virgil Eaton | Site design by <a href="https://yakbrother.com" target="_blank" rel="noopener noreferrer">Yakbrother</a>
@@ -39,8 +39,8 @@ import BackToTop from "@components/BackToTop.astro";
               const quoteTextEl = document.querySelector('.quote-text');
               const quoteAuthorEl = document.querySelector('.quote-author');
               
-              if (quoteTextEl) quoteTextEl.textContent = 'The first draft of anything is shit.';
-              if (quoteAuthorEl) quoteAuthorEl.textContent = '— Ernest Hemingway';
+              if (quoteTextEl) quoteTextEl.textContent = 'When I write, I feel like an armless, legless man with a crayon in his mouth.';
+              if (quoteAuthorEl) quoteAuthorEl.textContent = '— Kurt Vonnegut';
             });
         </script>
         

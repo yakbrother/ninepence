@@ -1,13 +1,27 @@
 import rss from "@astrojs/rss";
 import { SITE } from "@consts";
 import { getCollection } from "astro:content";
+import type { APIContext } from "astro";
 
-export async function GET(context) {
-  const story = (await getCollection("stories")).filter(
+interface StoryData {
+  draft?: boolean;
+  date: Date;
+  title: string;
+  description: string;
+}
+
+interface Story {
+  data: StoryData;
+  collection: string;
+  id: string;
+}
+
+export async function GET(context: APIContext) {
+  const stories = (await getCollection("stories")).filter(
     (post) => !post.data.draft,
-  );
+  ) as unknown as Story[];
 
-  const items = story.sort(
+  const items = stories.sort(
     (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf(),
   );
 

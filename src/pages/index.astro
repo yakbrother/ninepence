@@ -39,7 +39,7 @@ const sortedTags = Object.entries(tagCounts)
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
     <aside data-pagefind-ignore>
-      <div class="home-container">
+      <div id="home-container">
         <section>
           <em>
             Bienvenue, mes amis! I've always loved writing, and traveling, and
@@ -51,10 +51,11 @@ const sortedTags = Object.entries(tagCounts)
           </em>
         </section>
 
-        <section class="animate home-section">
+        <section class="animate
+          home-section">
           <div class="home-section-header">
             <h2 class="home-section-title">Latest stories</h2>
-            <Link href="/stories"> See all stories </Link>
+            <Link href="/stories" class="emphasized"> See all stories </Link>
           </div>
           <ul class="story-grid">
             {
@@ -65,15 +66,20 @@ const sortedTags = Object.entries(tagCounts)
                       <div class="story-item-header">
                         <h3 class="story-item-title">{post.data.title}</h3>
                         <div class="story-item-date">
-                          {new Date(post.data.date).toLocaleDateString("en-UK", {
-                            month: "short",
-                            day: "numeric",
-                            year: "numeric",
-                          })}
+                          {new Date(post.data.date).toLocaleDateString(
+                            "en-UK",
+                            {
+                              month: "short",
+                              day: "numeric",
+                              year: "numeric",
+                            },
+                          )}
                         </div>
                       </div>
                       {post.data.description && (
-                        <p class="story-item-description">{post.data.description}</p>
+                        <p class="story-item-description">
+                          {post.data.description}
+                        </p>
                       )}
                     </div>
                   </a>
@@ -86,7 +92,7 @@ const sortedTags = Object.entries(tagCounts)
         <section class="animate home-section">
           <div class="home-section-header">
             <h2 class="home-section-title">Browse by Tag</h2>
-            <Link href="/tags"> See all tags </Link>
+            <Link href="/tags" class="emphasized"> See all tags </Link>
           </div>
           <div class="tags-grid">
             {
@@ -111,22 +117,23 @@ const sortedTags = Object.entries(tagCounts)
           </article>
           <ul class="not-prose home-socials-list">
             {
-              SOCIALS.map((SOCIAL) => (
+              SOCIALS.map((SOCIAL, index) => (
                 <li class="home-social-item">
                   <Link
                     href={SOCIAL.HREF}
                     external
+                    class="hover-accent"
                     aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
                   >
                     {SOCIAL.NAME}
                   </Link>
-                  {"/"}
                 </li>
               ))
             }
             <li class="home-email-item">
               <Link
                 href={`mailto:${SITE.EMAIL}`}
+                class="hover-accent"
                 aria-label={`Email ${SITE.TITLE}`}
               >
                 {SITE.EMAIL}
@@ -137,4 +144,11 @@ const sortedTags = Object.entries(tagCounts)
       </div>
     </aside>
   </Container>
+
+  <style>
+    div.home-container section {
+      padding-top: var(--s2);
+      margin-bottom: var(--s2);
+    }
+  </style>
 </Layout>
