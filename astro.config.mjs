@@ -1,12 +1,11 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
-import pagefind from "astro-pagefind";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://mostlytrue.life",
-  integrations: [sitemap(), mdx(), pagefind()],
+  integrations: [sitemap(), mdx()],
 
   markdown: {
     shikiConfig: {

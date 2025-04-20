@@ -3,6 +3,7 @@ export type Site = {
   DESCRIPTION: string;
   EMAIL: string;
   NUM_POSTS_ON_HOMEPAGE: number;
+  WEBSITE_URL: string;
 };
 
 export type Metadata = {

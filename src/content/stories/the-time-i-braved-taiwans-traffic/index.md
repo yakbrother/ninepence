@@ -5,6 +5,7 @@ date: "2025-03-31"
 draft: false
 tags: ["asia", "taiwan", "scooters", "something new"]
 ---
+
 You'll often hear that you need an international driver's license to rent a scooter in Taiwan, but this is manifestly untrue, at least as not observed at small scooter-rental stores.
 
 Never being one to leave a theory untested, I decided to experience first-hand what driving a scooter in Hualien, Taiwan, felt like.
@@ -23,4 +24,4 @@ Quickly I realized that the chaos of the traffic was actually my best friend. In
 
 But here. Here in Taiwan, where the traffic is chaotic, every driver is constantly aware that something odd might happen. Everyone's foot is by their brake. Everyone expects the unexpected. Right of way doesn't exist - you just go, and stop when you need to. I love it. Go like hell and harm none.
 
-What I thought was an intimidating, possibly illegal, adventure turned into one of my favorite lessons from that trip. I suppose this helped me view traffic anywhere in a new way - I didn’t have to feel entitled or have the right of way, I just went where there was an opening, always ready to stop for a person or bigger vehicle.  This was like some giant autonomous zone where anarchy reigned and semi-peacefully worked out. I smiled and zoomed between two large busses before they could merge, hand on the brakes for what was on the other side, where I couldn’t yet see.
+What I thought was an intimidating, possibly illegal, adventure turned into one of my favorite lessons from that trip. I suppose this helped me view traffic anywhere in a new way - I didn’t have to feel entitled or have the right of way, I just went where there was an opening, always ready to stop for a person or bigger vehicle. This was like some giant autonomous zone where anarchy reigned and semi-peacefully worked out. I smiled and zoomed between two large busses before they could merge, hand on the brakes for what was on the other side, where I couldn’t yet see.

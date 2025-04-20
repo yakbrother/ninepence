@@ -5,6 +5,7 @@ export const SITE: Site = {
   DESCRIPTION: "A selection of stories I like to tell around a campfire",
   EMAIL: "virgil@mostlytrue.life",
   NUM_POSTS_ON_HOMEPAGE: 7,
+  WEBSITE_URL: "https://mostlytrue.life",
 };
 
 export const HOME: Metadata = {
