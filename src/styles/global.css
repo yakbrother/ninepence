@@ -87,9 +87,10 @@ main {
   --font-mono: Menlo, Courier, Courier New, Andale Mono, monospace;
   --color-background: #f5e4d3;
   --color-background-muted: #f5e4d3;
-  --color-text-muted: #c;
+  --color-text-muted: #453545;
   --color-text: #2f202f;
   --color-mid: #808080;
+  --color-title: #466378;
   --color-accent: #cb451f;
   --color-accent-rgb: 203, 69, 31;
   --color-tag-bg: #98afba;
@@ -167,6 +168,7 @@ html.dark {
   --color-footer: #415f57;
   --color-background: #55423d;
   --color-accent: #cb451f;
+  --color-title: #98afba;
   --color-tag-bg: #98afba;
 }
 
@@ -441,8 +443,8 @@ pre {
 
 .site-title {
   font-family: var(--font-special);
-  font-weight: 400;
-  color: var(--color-accent);
+  font-weight: 700;
+  color: var(--color-title);
   font-size: var(--s3);
   line-height: 1.1;
   letter-spacing: 0.05em;
