@@ -1,58 +1,99 @@
-// Enhanced parallax scrolling effect for the footer
-document.addEventListener('DOMContentLoaded', () => {
+// Enhanced parallax scrolling effect for the footer with iOS support
+const initParallax = (): void => {
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+                (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  
+  // Request animation frame for smoother performance
+  let ticking = false;
+  
   const parallaxFooter = document.querySelector('.popup-footer-container') as HTMLElement;
   const parallaxBackground = document.querySelector('.popup-footer-background') as HTMLElement;
   const parallaxContent = document.querySelector('.popup-footer-content') as HTMLElement;
   const mainContent = document.querySelector('main') as HTMLElement;
   
-  if (!parallaxFooter || !parallaxBackground || !parallaxContent || !mainContent) return;
+  if (!parallaxFooter || !parallaxBackground || !parallaxContent || !mainContent) {
+    return;
+  }
+  
+  // iOS-specific styles
+  if (isIOS) {
+    document.documentElement.style.overflow = 'auto';
+    document.body.style.overflow = 'auto';
+    document.body.style.height = 'auto';
+    document.body.style.position = 'relative';
+  }
   
   // Initial state - footer is hidden
+  parallaxFooter.style.willChange = 'transform, opacity';
   parallaxFooter.style.opacity = '0';
-  parallaxFooter.style.transform = 'translateY(100px)';
+  parallaxFooter.style.transform = 'translate3d(0, 100px, 0)';
   
-  // Function to handle scroll effect
-  function handleScroll(): void {
-    const scrollPosition: number = window.scrollY;
-    const windowHeight: number = window.innerHeight;
-    const documentHeight: number = document.body.scrollHeight;
-    const footerTop: number = parallaxFooter.getBoundingClientRect().top + window.scrollY;
-    const distanceFromBottom: number = documentHeight - (scrollPosition + windowHeight);
+  // Function to handle scroll effect with requestAnimationFrame
+  const updateParallax = (): void => {
+    const scrollPosition = window.scrollY || window.pageYOffset;
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+    const footerTop = parallaxFooter.getBoundingClientRect().top + (window.scrollY || window.pageYOffset);
+    const distanceFromBottom = documentHeight - (scrollPosition + windowHeight);
     
     // Start showing the footer when we're close to it
-    const footerVisibilityStart: number = 500; // px before the footer - increased for earlier reveal
+    const footerVisibilityStart = isIOS ? 300 : 500; // Smaller threshold for iOS
     
     if (footerTop - scrollPosition - windowHeight < footerVisibilityStart) {
       // Calculate how far into the visibility zone we are (0 to 1)
-      const visibilityRatio: number = Math.min(
+      const visibilityRatio = Math.min(
         1, 
         (footerVisibilityStart - (footerTop - scrollPosition - windowHeight)) / footerVisibilityStart
       );
       
-      // Apply opacity and slide-up based on scroll position
+      // Use transform3d for hardware acceleration
       parallaxFooter.style.opacity = visibilityRatio.toString();
-      parallaxFooter.style.transform = `translateY(${100 - (visibilityRatio * 100)}px)`;
+      parallaxFooter.style.transform = `translate3d(0, ${100 - (visibilityRatio * 100)}px, 0)`;
       
-      // Apply more dramatic parallax effect to the background
-      parallaxBackground.style.transform = `translateZ(-150px) scale(1.7) translateY(${-visibilityRatio * 100}px)`;
+      // Apply parallax effects with hardware acceleration
+      parallaxBackground.style.transform = `translate3d(0, ${-visibilityRatio * 100}px, -150px) scale(1.7)`;
+      parallaxContent.style.transform = `translate3d(0, ${-visibilityRatio * 40}px, 0)`;
       
-      // Apply parallax effect to the content
-      parallaxContent.style.transform = `translateZ(0) translateY(${-visibilityRatio * 40}px)`;
-      
-      // Add a subtle effect to the main content as well
-      mainContent.style.transform = `scale(${1 - (visibilityRatio * 0.02)})`;
+      // Only apply scale effect if not on iOS for better performance
+      if (!isIOS) {
+        mainContent.style.transform = `scale(${1 - (visibilityRatio * 0.02)})`;
+      }
     }
     
     // When we're at the bottom of the page, ensure footer is fully visible
     if (distanceFromBottom < 20) {
       parallaxFooter.style.opacity = '1';
-      parallaxFooter.style.transform = 'translateY(0)';
+      parallaxFooter.style.transform = 'translate3d(0, 0, 0)';
     }
   }
   
-  // Add scroll event listener
-  window.addEventListener('scroll', handleScroll);
+  // Throttle scroll events with requestAnimationFrame
+  const handleScroll = (): void => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateParallax();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  };
+  
+  // Add scroll event listener with passive for better performance
+  window.addEventListener('scroll', handleScroll, { passive: true });
   
   // Initial call to set correct state on page load
-  handleScroll();
-});
+  updateParallax();
+  
+  // Handle iOS resize events
+  if (isIOS) {
+    window.addEventListener('orientationchange', updateParallax);
+    window.addEventListener('resize', updateParallax);
+  }
+};
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initParallax);
+} else {
+  initParallax();
+}

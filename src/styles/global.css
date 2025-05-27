@@ -22,7 +22,7 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  background: none; /* Remove any background from body */
+
   min-height: 100vh;
   justify-content: space-between;
 }
@@ -37,6 +37,9 @@ main {
   padding-top: 180px; /* Space for the fixed header - adjust based on actual header height */
   padding-bottom: 120px; /* Add padding to create space for the sine wave divider */
   margin-top: 0; /* Reset margin */
+  background-color: #f5e4d3;
+  background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
 /* Font declarations */
@@ -49,16 +52,16 @@ main {
 }
 
 @font-face {
-  font-family: "Vollkorn";
-  src: url("/fonts/Vollkorn-Regular.woff2") format("woff2");
+  font-family: "Epilogue";
+  src: url("/assets/fonts/epiloge-webfont.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Vollkorn";
-  src: url("/fonts/Vollkorn-Italic.woff2") format("woff2");
+  font-family: "Epilogue";
+  src: url("/assets/fonts/epiloge-webfont-italic.woff2") format("woff2");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -72,25 +75,24 @@ main {
   font-style: normal;
 }
 
-.vollkorn {
-  font-family: "Vollkorn", serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
+.epilogue {
+  font-family: "Epilogue", sans-serif;
+  font-weight: 400;
   font-style: normal;
 }
 
 :root {
-  --font-plain: "Vollkorn", Helvetica Neue, Helvetica, Arial, sans-serif;
+  --font-plain: "Epilogue", Helvetica Neue, Helvetica, Arial, sans-serif;
   --font-special: "Rustic-Printed", Futura, serif;
   --font-mono: Menlo, Courier, Courier New, Andale Mono, monospace;
-  --color-background: #cbd5b1;
-  --color-background-muted: #a6b08b;
+  --color-background: #f5e4d3;
+  --color-background-muted: #f5e4d3;
   --color-text-muted: #c;
   --color-text: #2f202f;
   --color-mid: #808080;
   --color-accent: #cb451f;
   --color-accent-rgb: 203, 69, 31;
-  --color-tag-bg: #b9c5c3;
+  --color-tag-bg: #98afba;
   --color-footer: #033d5c;
   --ratio: 1.5;
   --max-width: 850px;
@@ -117,27 +119,44 @@ main {
   color-scheme: light dark;
 }
 
-/* Black grunge background - only covers main content */
-main::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  background-image: url("/assets/grunge-bg2.png");
-  background-size: 100% auto;
-  background-position: top center;
-  background-repeat: repeat-y;
-  opacity: 0.25;
-  pointer-events: none;
+/* Linen texture overlay */
+body {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--color-background);
+
+  background-repeat: repeat;
+  background-blend-mode: overlay;
+  opacity: 0.9;
 }
 
-html.dark main::after {
-  background-image: url("/assets/grunge-bg2.png");
-  filter: invert(1) brightness(1.5);
-  opacity: 0.25;
+main {
+  flex: 1;
+  margin-bottom: 0; /* Remove margin to let the divider handle spacing */
+  position: relative;
+  z-index: 5; /* Ensure main content is above the footer */
+  background-color: var(--color-background);
+
+  background-repeat: repeat;
+  min-height: 50vh; /* Reduced height to allow more space for footer */
+  padding-top: 180px; /* Space for the fixed header - adjust based on actual header height */
+  padding-bottom: 120px; /* Add padding to create space for the sine wave divider */
+  margin-top: 0; /* Reset margin */
+}
+
+/* Ensure content stays above the texture */
+main,
+header,
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure footer doesn't show the linen texture */
+.popup-footer-container {
+  position: relative;
+  z-index: 1;
+  background: var(--color-footer);
 }
 
 /* Class-based dark mode */
@@ -146,7 +165,7 @@ html.dark {
   --color-text: #f6edd9;
   --color-text-muted: #ffdd82;
   --color-footer: #415f57;
-  --color-background: hsl(151, 26%, 23%);
+  --color-background: #55423d;
   --color-accent: #cb451f;
   --color-tag-bg: #98afba;
 }
@@ -177,15 +196,11 @@ header {
   z-index: 50;
   padding-top: var(--s1);
   padding-bottom: var(--s1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: var(--color-background);
-  background-image: url("/assets/header-bg.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-html.dark header {
-  background-image: url("/assets/background-head-dark.jpg");
+  background-image: url("/assets/black-linen-new.png");
+  background-repeat: repeat;
+  border-bottom: 1px solid var(--color-text);
 }
 
 article {
@@ -204,6 +219,7 @@ article li,
 article blockquote,
 article pre {
   font-size: var(--s0);
+  max-width: 60ch;
   line-height: 1.7;
 }
 
@@ -434,7 +450,7 @@ pre {
 }
 
 .subtitle {
-  font-family: "Vollkorn", serif;
+  font-family: var(--font-plain);
   font-style: italic;
   font-size: var(--s-1);
   color: var(--color-text-muted);
@@ -854,61 +870,6 @@ details[open] .table-of-contents-summary,
   transform: translateX(0.75rem);
 }
 
-/* PageFind styles */
-.pagefind-backdrop {
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 50;
-  display: flex;
-  height: 100vh;
-  width: 100%;
-  justify-content: center;
-  padding: 1.5rem;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(2px);
-  opacity: 1;
-  visibility: visible;
-  transition:
-    opacity 0.2s ease,
-    visibility 0.2s ease;
-}
-
-.pagefind-backdrop.invisible {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.pagefind-container {
-  margin: 0;
-  display: flex;
-  height: fit-content;
-  max-height: 80%;
-  width: 100%;
-  max-width: var(--breakpoint-sm, 640px);
-  flex-direction: column;
-  overflow: auto;
-  border-radius: 0.125rem;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  background-color: #fafafa;
-  padding: 0.5rem 1rem 0.75rem 1rem;
-  box-shadow:
-    0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-.pagefind-instructions {
-  margin-right: 0.5rem;
-  padding-bottom: 0.25rem;
-  padding-top: 1rem;
-  text-align: right;
-  font-size: 0.75rem;
-}
-
-.pagefind-kbd {
-  font-size: 0.75rem;
-}
-
 /* Pop-up Footer styles */
 .popup-footer-container {
   position: fixed;
@@ -1204,7 +1165,7 @@ html.dark .popup-footer-background {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #637765;
+  background-color: #466378;
   border-radius: 30px;
   transition: 0.4s;
   display: flex;
@@ -1230,11 +1191,13 @@ html.dark .popup-footer-background {
 }
 
 .theme-toggle-checkbox:checked + .theme-toggle-slider {
-  background-color: #293340;
+  background-color: #466378;
+  color: var(--color-text);
 }
 
 .theme-toggle-checkbox:checked + .theme-toggle-slider:before {
   transform: translateX(30px);
+  color: var(--color-text);
   background-color: #fcffd9;
 }
 
@@ -1248,7 +1211,7 @@ html.dark .popup-footer-background {
 }
 
 .theme-toggle-sun {
-  color: #637765;
+  color: black;
   margin-right: 4px;
   opacity: 1;
   transition: opacity 0.3s;
@@ -1259,7 +1222,7 @@ html.dark .popup-footer-background {
 }
 
 .theme-toggle-moon {
-  color: #637765;
+  color: black;
   opacity: 0.5;
   transition: opacity 0.3s;
   z-index: 3;
@@ -1505,7 +1468,7 @@ html.dark {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  margin-bottom: var(--s4);
+  margin-bottom: var(--s1);
 }
 
 .home-section-header {
@@ -1514,7 +1477,7 @@ html.dark {
   align-items: baseline;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: var(--s1);
+  margin-bottom: 0;
 }
 
 /* Stories page styles */
@@ -1717,10 +1680,11 @@ html.dark {
   position: relative;
   display: flex;
   align-items: center;
-  padding: var(--s-1) var(--s0);
-  padding-right: var(--s1);
+  padding: 0.35rem 0.85rem;
+  font-size: 0.875rem;
+  border-radius: 2rem;
+
   background-color: var(--color-tag-bg);
-  border-radius: 1rem;
   text-decoration: none;
   color: var(--color-text);
   transition:
@@ -1901,7 +1865,7 @@ hr {
   border-radius: 1rem;
   padding: 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  margin-bottom: var(--s2);
+  margin-bottom: var(--s1);
   line-height: 1.8;
   font-size: var(--s1);
   font-weight: normal;
@@ -1913,8 +1877,8 @@ hr {
   font-size: var(--s3);
   color: var(--color-accent);
   letter-spacing: 0.03em;
-  margin-top: var(--s3);
-  margin-bottom: var(--s-1);
+  margin-top: var(--s1);
+  margin-bottom: 0px;
   text-transform: uppercase;
 }
 

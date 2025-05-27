@@ -8,26 +8,6 @@ draft: true
 import Callout from "@/components/Callout.astro";
 
 
-## Pagefind search 🔎
-
-[Pagefind](https://pagefind.app) is a search library for static websites. Micro uses [Sergey Shishkin's](https://github.com/shishkin) [astro-pagefind](https://github.com/shishkin/astro-pagefind) integration. This integration simplifies development and does not require any changes to the default build script.
-
-Press <kbd>/</kbd> or <kbd>CTRL</kbd> + <kbd>K</kbd> to open the search dialog. For Mac users, <kbd>⌘</kbd> + <kbd>K</kbd> can also be used. To dismiss the search dialog, press <kbd>Esc</kbd> or click on an area outside the component.
-
-### Build and develop
-
-<Callout type="error">
-  The site **must** be built at least once so Pagefind can index the content.
-</Callout>
-
-```bash
-# Pagefind must index the site to function
-npm run build
-```
-
-When developing you can continue to use `npm run dev` and Pagefind will use the index from the last available build.
-
----
 
 ## Giscus comments 💬
 
@@ -97,15 +77,13 @@ No active issues!
 ### Closed issues
 
 - Fixed by [blopker](https://github.com/blopker): [ToC links are obscured by Header when scrolled to](https://github.com/trevortylerlee/astro-micro/issues/4)
-- Fixed by [blopker](https://github.com/blopker): [Pagefind requires a refresh to function when ViewTransitions is enabled](https://github.com/trevortylerlee/astro-micro/issues/7)
 - Fixed by [arastoonet](https://github.com/arastoonet): [Fix typo in README](https://github.com/trevortylerlee/astro-micro/pull/19)
 - Fixed by [cgranier](https://github.com/cgranier): [Pagination links advance by slug/folder](https://github.com/trevortylerlee/astro-micro/issues/26)
 - Fixed by [cgranier](https://github.com/cgranier): [Hides Table of Contents when there are no headings](https://github.com/trevortylerlee/astro-micro/pull/30)
 - Fixed: [Giscus does not appear when switching stories via post navigation](https://github.com/trevortylerlee/astro-micro/issues/32)
 - Fixed: [Geist font renders incorrectly on Windows](https://github.com/trevortylerlee/astro-micro/issues/33)
 - Fixed: [Pagination fails in Cloudflare Pages](https://github.com/trevortylerlee/astro-micro/issues/39)
-- Fixed by [luciancah](https://github.com/luciancah): [Prevent Pagefind from double-indexing results](https://github.com/trevortylerlee/astro-micro/issues/40)
-- Fixed by [luciancah](https://github.com/luciancah): [Pagefind should close if a result is clicked](https://github.com/trevortylerlee/astro-micro/issues/43)
+
 - Fixed: [Implement tags](https://github.com/trevortylerlee/astro-micro/issues/70)
 - Fixed by [anaxite](https://github.com/anaxite): [Update Astro to 5.0](https://github.com/trevortylerlee/astro-micro/issues/73)
 - Fixed by [MoyaF](https://github.com/MoyaF): [Table of Contents links not working](https://github.com/trevortylerlee/astro-micro/issues/75)

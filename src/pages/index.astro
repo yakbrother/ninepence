@@ -36,122 +36,119 @@ const sortedTags = Object.entries(tagCounts)
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
-    <aside data-pagefind-ignore>
+    <aside>
       <div id="home-container">
         <section class="home-intro">
-          <em>
-            <img
-              src="assets/virgil.jpg"
-              alt="The auther, Virgil, with a small beard and casual suit"
-              class="intro-image"
-            />
-            Bienvenue, mes amis! I've always loved writing, and traveling, and talking
-            to people of all walks of life. I realized I had many stories that I've
-            polished over the years, and decided to write them down. My memory may
-            be hazy, and I've changed some names and places for privacy reasons,
-            but I promise they're Mostly True. As true as the size of the fish I
-            caught last week.
-          </em>
-        </section>
-
-        <section class="animate
-          home-section">
-          <div class="home-section-header">
-            <h2 class="home-section-title">Latest stories</h2>
-            <Link href="/stories" class="btn-link">See all stories</Link>
-          </div>
-          <ul class="story-grid">
-            {
-              stories.map((post) => (
-                <li class="story-item">
-                  <a href={`/${post.collection}/${post.id}`} class="story-link">
-                    <div class="story-item-container">
-                      <div class="story-item-header">
-                        <h3 class="story-item-title">{post.data.title}</h3>
-                        <div class="story-item-date">
-                          {new Date(post.data.date).toLocaleDateString(
-                            "en-UK",
-                            {
-                              month: "short",
-                              day: "numeric",
-                              year: "numeric",
-                            },
-                          )}
-                        </div>
-                      </div>
-                      {post.data.description && (
-                        <p class="story-item-description">
-                          {post.data.description}
-                        </p>
-                      )}
-                    </div>
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </section>
-
-        <section class="animate home-section">
-          <div class="home-section-header">
-            <h2 class="home-section-title">Browse by Tag</h2>
-            <Link href="/tags" class="btn-link">See all tags</Link>
-          </div>
-          <div class="tags-grid">
-            {
-              sortedTags.map((tagInfo) => (
-                <a href={`/tags/${tagInfo.tag}`} class="tag-item">
-                  <span class="tag-name">{tagInfo.tag}</span>
-                  <span class="tag-count">{tagInfo.count}</span>
-                </a>
-              ))
-            }
-          </div>
-        </section>
-
-        <section class="animate home-section">
-          <h2 class="home-section-title">Let's Connect</h2>
-          <article>
-            <p>
-              If you want to get in touch with me about something or just to say
-              hi, reach out on social media or send me an email. I'm near
-              Geneva, Switzerland, mostly these days.
-            </p>
-          </article>
-          <ul class="not-prose home-socials-list">
-            {
-              SOCIALS.map((SOCIAL) => (
-                <li class="home-social-item">
-                  <Link
-                    href={SOCIAL.HREF}
-                    external
-                    class="hover-accent"
-                    aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
-                  >
-                    {SOCIAL.NAME}
-                  </Link>
-                </li>
-              ))
-            }
-            <li class="home-email-item">
-              <Link
-                href={`mailto:${SITE.EMAIL}`}
-                class="hover-accent"
-                aria-label={`Email ${SITE.TITLE}`}
-              >
-                {SITE.EMAIL}
-              </Link>
-            </li>
-          </ul>
+          <img
+            src="/assets/virgil.jpg"
+            alt="The auther, Virgil, with a small beard and casual suit"
+            class="intro-image"
+          />
+          Bienvenue, mes amis! I've always loved writing, and traveling, and talking
+          to people of all walks of life. I realized I had many stories that I've
+          polished over the years, and decided to write them down. My memory may
+          be hazy, and I've changed some names and places for privacy reasons, but
+          I promise they're Mostly True. As true as the size of the fish I caught
+          last week.
         </section>
       </div>
+
+      <section class="animate
+          home-section">
+        <div class="home-section-header">
+          <h2 class="home-section-title">Latest stories</h2>
+          <Link href="/stories" class="btn-link">See all stories</Link>
+        </div>
+        <ul class="story-grid">
+          {
+            stories.map((post) => (
+              <li class="story-item">
+                <a href={`/${post.collection}/${post.id}`} class="story-link">
+                  <div class="story-item-container">
+                    <div class="story-item-header">
+                      <h3 class="story-item-title">{post.data.title}</h3>
+                      <div class="story-item-date">
+                        {new Date(post.data.date).toLocaleDateString("en-UK", {
+                          month: "short",
+                          day: "numeric",
+                          year: "numeric",
+                        })}
+                      </div>
+                    </div>
+                    {post.data.description && (
+                      <p class="story-item-description">
+                        {post.data.description}
+                      </p>
+                    )}
+                  </div>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class="animate home-section">
+        <div class="home-section-header">
+          <h2 class="home-section-title">Browse by Tag</h2>
+          <Link href="/tags" class="btn-link">See all tags</Link>
+        </div>
+        <div class="tags-grid">
+          {
+            sortedTags.map((tagInfo) => (
+              <a href={`/tags/${tagInfo.tag}`} class="tag-item">
+                <span class="tag-name">{tagInfo.tag}</span>
+                <span class="tag-count">{tagInfo.count}</span>
+              </a>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="animate home-section">
+        <h2 class="home-section-title">Let's Connect</h2>
+        <article>
+          <p>
+            If you want to get in touch with me about a story or just to say hi,
+            feel free to reach out at <a href="mailto:virgil@mostlytrue.life"
+              >virgil@mostlytrue.life</a
+            >. And if you happen to be near Geneva or Lausanne, Switzerland, I'm
+            always open to making new friends over a coffee or beer!
+          </p>
+        </article>
+        <ul class="not-prose home-socials-list">
+          {
+            SOCIALS.map((SOCIAL) => (
+              <li class="home-social-item">
+                <Link
+                  href={SOCIAL.HREF}
+                  external
+                  class="hover-accent"
+                  aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
+                >
+                  {SOCIAL.NAME}
+                </Link>
+              </li>
+            ))
+          }
+          <li class="home-email-item">
+            <Link
+              href={`mailto:${SITE.EMAIL}`}
+              class="hover-accent"
+              aria-label={`Email ${SITE.TITLE}`}
+            >
+              {SITE.EMAIL}
+            </Link>
+          </li>
+        </ul>
+      </section>
     </aside>
   </Container>
-
-  <style>
-    div.home-container section {
-      padding-top: var(--s2);
-      margin-bottom: var(--s2);
-    }
-  </style>
 </Layout>
+
+<style>
+  div.home-container section {
+    padding-top: var(--s2);
+    margin-bottom: var(--s2);
+  }
+</style>
