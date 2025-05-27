@@ -22,4 +22,4 @@ As I've retold and polished the stories, through years of mountain IPAs and fish
 
 And each story is 100% guaranteed to be about 83% to 92% true.
 
-So pull up glass of your favorite beverage, and have I got a story for you tonight!
+So, pull up a glass of your favorite beverage, and have I got a story for you tonight!
