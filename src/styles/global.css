@@ -60,6 +60,17 @@ main {
 }
 
 /* Font declarations */
+
+@font-face {
+  font-family: "ia-writer";
+  src:
+    url("/fonts/ia-writer-quattro-latin-400-normal-webfont.woff2")
+      format("woff2"),
+    url("/fonts/ia-writer-quattro-latin-400-normal-webfont.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
 @font-face {
   font-family: "Rustic-Printed";
   src: url("/fonts/Rustic-Printed.woff2") format("woff2");
