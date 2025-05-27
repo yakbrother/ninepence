@@ -37,9 +37,26 @@ main {
   padding-top: 180px; /* Space for the fixed header - adjust based on actual header height */
   padding-bottom: 120px; /* Add padding to create space for the sine wave divider */
   margin-top: 0; /* Reset margin */
-  background-color: #f5e4d3;
-  background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
-  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+  background-image: url("/assets/absurdity.png");
+}
+
+/* iOS Scroll Fix */
+.ios-scroll-fix {
+  overflow: auto;
+  height: auto;
+  position: relative;
+}
+
+/* Footer Transitions */
+.popup-footer-container {
+  will-change: transform, opacity;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.popup-footer-container.hidden {
+  opacity: 0;
+  transform: translate3d(0, 100px, 0);
+  pointer-events: none;
 }
 
 /* Font declarations */
