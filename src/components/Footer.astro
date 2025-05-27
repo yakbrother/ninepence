@@ -3,236 +3,149 @@
 ---
 
 <!-- Main Footer Structure -->
-<div class="popup-footer-container">
-  <div class="popup-footer-background"></div>
-  <div class="popup-footer-content">
-    <div class="popup-footer-inner">
-      <div class="popup-footer-columns">
-        <!-- Quote Column -->
-        <div class="popup-footer-column quote">
-          <div class="writing-quote">
-            <p class="quote-text">
-              "When I write, I feel like an armless, legless man with a crayon
-              in his mouth."
-            </p>
-            <p class="quote-author">— Kurt Vonnegut</p>
-          </div>
-          <div class="popup-footer-copyright">
-            &copy; {new Date().getFullYear()} Virgil Eaton | Site design by <a
-              href="https://www.timeaton.dev"
-              target="_blank"
-              rel="noopener noreferrer">Yakbrother</a
-            >
-          </div>
-        </div>
-
-        <script>
-          // Fetch and display a random writing quote
-          fetch("/data/writing-quotes.json")
-            .then((response) => response.json())
-            .then((quotes) => {
-              const randomIndex = Math.floor(Math.random() * quotes.length);
-              const quote = quotes[randomIndex];
-              const quoteTextEl = document.querySelector(".quote-text");
-              const quoteAuthorEl = document.querySelector(".quote-author");
-
-              if (quoteTextEl) quoteTextEl.textContent = `"${quote.quote}"`;
-              if (quoteAuthorEl)
-                quoteAuthorEl.textContent = `— ${quote.author}`;
-            })
-            .catch((error) => {
-              console.error("Error loading quotes:", error);
-              const quoteTextEl = document.querySelector(".quote-text");
-              const quoteAuthorEl = document.querySelector(".quote-author");
-
-              if (quoteTextEl)
-                quoteTextEl.textContent =
-                  "When I write, I feel like an armless, legless man with a crayon in his mouth.";
-              if (quoteAuthorEl) quoteAuthorEl.textContent = "— Kurt Vonnegut";
-            });
-        </script>
-
-        <!-- Connect Column -->
-        <div class="popup-footer-column links">
-          <!-- Yak Image -->
-          <div class="footer-yak-image">
-            <img src="/assets/yak-writing.jpeg" alt="Cartoon yak writing" />
-          </div>
-
-          <!-- Social Links -->
-          <div class="social-links-container">
-            <a
-              href="https://github.com/yakbrother"
-              class="social-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div class="social-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  ><path
-                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-                  ></path></svg
-                >
-              </div>
-            </a>
-
-            <a
-              href="https://instagram.com/yakbrother"
-              class="social-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div class="social-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  ><rect x="2" y="2" width="20" height="20" rx="5" ry="5"
-                  ></rect><path
-                    d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
-                  ></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"
-                  ></line></svg
-                >
-              </div>
-            </a>
-
-            <a href="mailto:contact@yakbrother.com" class="social-link">
-              <div class="social-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  ><path
-                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                  ></path><polyline points="22,6 12,13 2,6"></polyline></svg
-                >
-              </div>
-            </a>
-
-            <a
-              href="https://bsky.app/profile/yakbrother.bsky.social"
-              class="social-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div class="social-icon">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path d="M12 2L7 7H2v5l5 5v5h10v-5l5-5V7h-5l-5-5z"></path>
-                </svg>
-              </div>
-            </a>
-          </div>
-        </div>
+<footer>
+  <div class="popup-footer-columns">
+    <!-- Quote Column -->
+    <div class="popup-footer-column quote">
+      <div class="writing-quote">
+        <p class="quote-text">
+          "When I write, I feel like an armless, legless man with a crayon in
+          his mouth."
+        </p>
+        <p class="quote-author">— Kurt Vonnegut</p>
+      </div>
+      <div class="popup-footer-copyright">
+        &copy; {new Date().getFullYear()} Virgil Eaton | Site design by <a
+          href="https://www.timeaton.dev"
+          target="_blank"
+          rel="noopener noreferrer">Yakbrother</a
+        >
       </div>
     </div>
-  </div>
-</div>
 
-<footer class="animate footer-full-width">
-  <div class="footer-inner">
-    <div class="footer-content">
-      <div class="theme-buttons-container">
-        <button
-          id="light-theme-button"
-          aria-label="Light theme"
-          class="theme-button group"
+    <script>
+      // Fetch and display a random writing quote
+      fetch("/data/writing-quotes.json")
+        .then((response) => response.json())
+        .then((quotes) => {
+          const randomIndex = Math.floor(Math.random() * quotes.length);
+          const quote = quotes[randomIndex];
+          const quoteTextEl = document.querySelector(".quote-text");
+          const quoteAuthorEl = document.querySelector(".quote-author");
+
+          if (quoteTextEl) quoteTextEl.textContent = `"${quote.quote}"`;
+          if (quoteAuthorEl) quoteAuthorEl.textContent = `— ${quote.author}`;
+        })
+        .catch((error) => {
+          console.error("Error loading quotes:", error);
+          const quoteTextEl = document.querySelector(".quote-text");
+          const quoteAuthorEl = document.querySelector(".quote-author");
+
+          if (quoteTextEl)
+            quoteTextEl.textContent =
+              "When I write, I feel like an armless, legless man with a crayon in his mouth.";
+          if (quoteAuthorEl) quoteAuthorEl.textContent = "— Kurt Vonnegut";
+        });
+    </script>
+
+    <!-- Connect Column -->
+    <div class="popup-footer-column links">
+      <!-- Yak Image -->
+      <div class="footer-yak-image">
+        <img src="/assets/yak-writing.jpeg" alt="Cartoon yak writing" />
+      </div>
+
+      <!-- Social Links -->
+      <div class="social-links-container">
+        <a
+          href="https://github.com/yakbrother"
+          class="social-link"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="theme-button-icon"
-          >
-            <circle cx="12" cy="12" r="5"></circle>
-            <line x1="12" y1="1" x2="12" y2="3"></line>
-            <line x1="12" y1="21" x2="12" y2="23"></line>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-            <line x1="1" y1="12" x2="3" y2="12"></line>
-            <line x1="21" y1="12" x2="23" y2="12"></line>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-          </svg>
-        </button>
-        <button
-          id="dark-theme-button"
-          aria-label="Dark theme"
-          class="theme-button group"
+          <div class="social-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path
+                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+              ></path></svg
+            >
+          </div>
+        </a>
+
+        <a
+          href="https://instagram.com/yakbrother"
+          class="social-link"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="theme-button-icon"
-          >
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </button>
-        <button
-          id="system-theme-button"
-          aria-label="System theme"
-          class="theme-button group"
+          <div class="social-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><rect x="2" y="2" width="20" height="20" rx="5" ry="5"
+              ></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+              ></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg
+            >
+          </div>
+        </a>
+
+        <a href="mailto:contact@yakbrother.com" class="social-link">
+          <div class="social-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              ><path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              ></path><polyline points="22,6 12,13 2,6"></polyline></svg
+            >
+          </div>
+        </a>
+
+        <a
+          href="https://bsky.app/profile/yakbrother.bsky.social"
+          class="social-link"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="theme-button-icon"
-          >
-            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-            <line x1="8" y1="21" x2="16" y2="21"></line>
-            <line x1="12" y1="17" x2="12" y2="21"></line>
-          </svg>
-        </button>
+          <div class="social-icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 2L7 7H2v5l5 5v5h10v-5l5-5V7h-5l-5-5z"></path>
+            </svg>
+          </div>
+        </a>
       </div>
     </div>
   </div>

@@ -29,34 +29,21 @@ body {
 
 main {
   flex: 1;
-  margin-bottom: 0; /* Remove margin to let the divider handle spacing */
+  margin-bottom: 0;
   position: relative;
-  z-index: 5; /* Ensure main content is above the footer */
   background-color: var(--color-background);
-  min-height: 50vh; /* Reduced height to allow more space for footer */
-  padding-top: 180px; /* Space for the fixed header - adjust based on actual header height */
-  padding-bottom: 120px; /* Add padding to create space for the sine wave divider */
-  margin-top: 0; /* Reset margin */
+  min-height: 50vh;
+  padding-top: 180px;
+  padding-bottom: 60px;
+  margin-top: 0;
   background-image: url("/assets/absurdity.png");
 }
 
-/* iOS Scroll Fix */
-.ios-scroll-fix {
-  overflow: auto;
-  height: auto;
-  position: relative;
-}
-
-/* Footer Transitions */
+/* Footer container */
 .popup-footer-container {
-  will-change: transform, opacity;
-  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
-}
-
-.popup-footer-container.hidden {
-  opacity: 0;
-  transform: translate3d(0, 100px, 0);
-  pointer-events: none;
+  position: relative;
+  background-color: var(--color-background);
+  padding: 2rem 0;
 }
 
 /* Font declarations */
@@ -889,134 +876,111 @@ details[open] .table-of-contents-summary,
   transform: translateX(0.75rem);
 }
 
-/* Pop-up Footer styles */
-.popup-footer-container {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+/* Footer Styles */
+.footer {
   width: 100%;
-  height: auto;
-  min-height: 550px;
-  overflow: visible; /* Allow content to overflow */
-  border-radius: 0;
-  box-shadow: none;
-  z-index: 1; /* Below the main content */
-  pointer-events: auto; /* Allow pointer events */
-  transform: translateY(0); /* Ensure it stays at the bottom */
+  padding: 2rem;
+  background-color: #000000;
+  color: #ffffff;
 }
 
-.popup-footer-container::after {
-  content: "";
-  position: absolute;
-  bottom: -100vh; /* Extend well below the viewport */
-  left: 0;
-  width: 100%;
-  height: 100vh; /* Full viewport height extension */
-  background-color: rgba(
-    42,
-    58,
-    56,
-    1
-  ); /* Solid version of the dark color from the gradient */
-  z-index: -1;
-}
-
-.popup-footer-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("/assets/footer-bg-purple.jpg");
-  background-size: cover;
-  background-position: center;
-  z-index: 1;
-  pointer-events: none;
-}
-
-html.dark .popup-footer-background {
-  background-image: url("/assets/footer-bg-dark2.jpg");
-}
-
-.popup-footer-content {
-  position: relative;
-  z-index: 1; /* Same level as the container */
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: var(--s0);
-  padding-top: 200px;
-  padding-bottom: var(--s2);
-  color: white;
-  background-color: transparent; /* Let the background image show through */
-  pointer-events: auto; /* Ensure all content is interactive */
-  user-select: text;
-}
-
-.popup-footer-inner {
-  max-width: 1000px;
+.footer-container {
+  max-width: 1200px;
   margin: 0 auto;
-  width: 100%;
+  padding: 0 2rem;
 }
 
-.popup-footer-title {
-  font-size: var(--s3);
-  margin-bottom: var(--s0);
-  color: var(--color-accent);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.popup-footer-description {
-  font-size: var(--s1);
-  margin-bottom: var(--s1);
-  max-width: 600px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-/* Two-column footer layout */
-.popup-footer-columns {
+.footer-content {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--s2);
+  align-items: center;
   justify-content: space-between;
-  width: 100%;
 }
 
-/* Mobile/iPhone specific adjustments */
-@media (max-width: 480px) {
-  .popup-footer-container {
-    height: auto;
-    min-height: 100%;
-  }
-
-  .popup-footer-content {
-    padding-top: 60px;
-    padding-bottom: 40px;
-  }
-
-  .popup-footer-columns {
-    flex-direction: column;
-  }
-
-  .popup-footer-column {
-    min-width: 100%;
-  }
-
-  .popup-footer-column.quote {
-    display: none;
-  }
+.footer-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: flex-start;
 }
 
-.popup-footer-column {
-  flex: 1;
-  min-width: 250px;
-  width: 100%;
+.quote {
+  font-style: italic;
+  padding-right: 2rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.popup-footer-column.quote {
-  text-align: left;
+.quote-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.quote-author {
+  font-weight: 600;
+  color: #ffffff;
+  opacity: 0.8;
+}
+
+.social-section {
+  padding-left: 2rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  color: #ffffff;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.social-link:hover {
+  color: var(--color-primary);
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.social-text {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.social-link:hover .social-text {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 1rem;
+  }
+
+  .footer-columns {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .quote {
+    padding-right: 0;
+    padding-bottom: 2rem;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .social-section {
+    padding-left: 0;
+  }
 }
 
 .writing-quote {
@@ -1041,10 +1005,6 @@ html.dark .popup-footer-background {
   margin-top: 0.5rem;
   font-weight: 500;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-}
-
-.popup-footer-column.links {
-  text-align: left;
 }
 
 .footer-yak-image {
@@ -1100,38 +1060,6 @@ html.dark .popup-footer-background {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.popup-footer-button {
-  display: inline-block;
-  padding: var(--s-1) var(--s1);
-  background-color: var(--color-tag-bg);
-  color: var(--color-text);
-  border-radius: 2rem;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.popup-footer-button:hover {
-  background-color: var(--color-accent);
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
-}
-
-.popup-footer-copyright {
-  margin-top: var(--s2);
-  font-size: var(--s0);
-  color: var(--color-background-muted);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.popup-footer-copyright a:hover,
-.popup-footer-copyright a:focus-visible {
-  color: var(--color-accent);
-  text-decoration: underline;
-}
-
 /* Regular Footer styles */
 .footer-top-container {
   position: relative;
@@ -1141,20 +1069,6 @@ html.dark .popup-footer-background {
   position: absolute;
   top: -3rem;
   right: 0;
-}
-
-.footer-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.theme-buttons-container {
-  display: none; /* Hide the old theme buttons */
-}
-
-.theme-button {
-  display: none; /* Hide the old theme buttons */
 }
 
 /* Theme Toggle Slider Styles */
