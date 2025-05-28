@@ -24,8 +24,7 @@ const { title, description, image = "/astro-micro.jpg" } = Astro.props;
 />
 <meta name="generator" content={Astro.generator} />
 
-<!-- Font preloading -->
-<link rel="preload" href="/fonts/Rustic-Printed.woff2" as="font" type="font/woff2" crossorigin />
+<!-- Font preloading - Cartridge font is loaded via @font-face with font-display: swap -->
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />

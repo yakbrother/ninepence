@@ -3,10 +3,10 @@
 ---
 
 <!-- Main Footer Structure -->
-<footer>
-  <div class="popup-footer-columns">
+<footer class="footer-full-width">
+  <div class="footer-content">
     <!-- Quote Column -->
-    <div class="popup-footer-column quote">
+    <div class="footer-column quote">
       <div class="writing-quote">
         <p class="quote-text">
           "When I write, I feel like an armless, legless man with a crayon in
@@ -14,7 +14,7 @@
         </p>
         <p class="quote-author">— Kurt Vonnegut</p>
       </div>
-      <div class="popup-footer-copyright">
+      <div class="footer-copyright">
         &copy; {new Date().getFullYear()} Virgil Eaton | Site design by <a
           href="https://www.timeaton.dev"
           target="_blank"
@@ -36,8 +36,7 @@
           if (quoteTextEl) quoteTextEl.textContent = `"${quote.quote}"`;
           if (quoteAuthorEl) quoteAuthorEl.textContent = `— ${quote.author}`;
         })
-        .catch((error) => {
-          console.error("Error loading quotes:", error);
+        .catch(() => {
           const quoteTextEl = document.querySelector(".quote-text");
           const quoteAuthorEl = document.querySelector(".quote-author");
 
@@ -49,7 +48,7 @@
     </script>
 
     <!-- Connect Column -->
-    <div class="popup-footer-column links">
+    <div class="footer-column links">
       <!-- Yak Image -->
       <div class="footer-yak-image">
         <img src="/assets/yak-writing.jpeg" alt="Cartoon yak writing" />
