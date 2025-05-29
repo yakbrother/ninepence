@@ -58,7 +58,7 @@ main {
 
 @font-face {
   font-family: "Epilogue";
-  src: url("/fonts/epiloge-webfont.woff2") format("woff2");
+  src: url("/fonts/epilogue-webfont.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -66,7 +66,7 @@ main {
 
 @font-face {
   font-family: "Epilogue";
-  src: url("/fonts/epiloge-webfont-italic.woff2") format("woff2");
+  src: url("/fonts/epilogue-italic-webfont.woff2") format("woff2");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -88,7 +88,7 @@ main {
 
 :root {
   --font-plain: "Epilogue", Helvetica Neue, Helvetica, Arial, sans-serif;
-  --font-special: "Rustic-Printed", Futura, serif;
+  --font-special: "Rustic-Printed", serif;
   --font-mono: Menlo, Courier, Courier New, Andale Mono, monospace;
   --color-background: #f5e4d3;
   --color-background-muted: #f5e4d3;
@@ -99,7 +99,8 @@ main {
   --color-accent: #cb451f;
   --color-accent-rgb: 203, 69, 31;
   --color-tag-bg: #98afba;
-  --color-footer: #033d5c;
+  --color-footer-background: #033d5c;
+  --color-footer: #f5e4d3;
   --ratio: 1.5;
   --max-width: 850px;
   --s-5: clamp(0.33rem, 0.39rem + -0.29vw, 0.18rem);
@@ -477,7 +478,8 @@ pre {
 }
 
 .main-nav a,
-.home-socials-list a {
+.home-socials-list a,
+.main-nav .rss-link {
   font-family: "Rustic-Printed", serif;
   color: var(--color-text);
   text-decoration: none;
@@ -486,6 +488,18 @@ pre {
   border: 1px solid var(--color-background);
   transition: all 0.3s ease;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.main-nav .rss-link {
+  padding: 0.5rem;
+}
+
+.main-nav .rss-link svg {
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .main-nav a:hover,
@@ -882,7 +896,7 @@ details[open] .table-of-contents-summary,
   width: 100%;
   padding: 2rem;
   background-color: #000000;
-  color: #ffffff;
+  color: VAR(--color-footer);
 }
 
 .footer-container {
@@ -993,15 +1007,14 @@ details[open] .table-of-contents-summary,
 .quote-text {
   font-size: var(--s1);
   font-style: italic;
-  color: var(--color-background);
+  color: var(--color-footer);
   margin-bottom: 0.5rem;
   line-height: 1.6;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
-
-.quote-author {
+b .quote-author {
   font-size: var(--s0);
-  color: var(--color-background);
+  color: var(--color-footer);
   text-align: left;
   margin-top: 0.5rem;
   font-weight: 500;
@@ -1014,6 +1027,11 @@ details[open] .table-of-contents-summary,
   width: 100%;
   position: relative;
   z-index: 1;
+}
+
+.footer-copyright {
+  color: var(--color-footer);
+  opacity: 0.7;
 }
 
 .footer-yak-image img {
