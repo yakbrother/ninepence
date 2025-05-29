@@ -22,54 +22,51 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  background: none; /* Remove any background from body */
+
   min-height: 100vh;
   justify-content: space-between;
 }
 
 main {
   flex: 1;
-  margin-bottom: 0; /* Remove margin to let the divider handle spacing */
+  margin-bottom: 0;
   position: relative;
-  z-index: 5; /* Ensure main content is above the footer */
   background-color: var(--color-background);
-  min-height: 50vh; /* Reduced height to allow more space for footer */
-  padding-top: 180px; /* Space for the fixed header - adjust based on actual header height */
-  padding-bottom: 120px; /* Add padding to create space for the sine wave divider */
-  margin-top: 0; /* Reset margin */
+  min-height: 50vh;
+  padding-top: 180px;
+  padding-bottom: 60px;
+  margin-top: 0;
+  background-image: url("/assets/absurdity.png");
+}
+
+/* Footer container */
+.popup-footer-container {
+  position: relative;
+  background-color: var(--color-background);
+  padding: 2rem 0;
 }
 
 /* Font declarations */
 
 @font-face {
-  font-family: "ia-writer";
-  src:
-    url("/fonts/ia-writer-quattro-latin-400-normal-webfont.woff2")
-      format("woff2"),
-    url("/fonts/ia-writer-quattro-latin-400-normal-webfont.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
   font-family: "Rustic-Printed";
-  src: url("/fonts/Rustic-Printed.woff2") format("woff2");
+  src: url("/fonts/bygonest_rustic_bold-webfont.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Vollkorn";
-  src: url("/fonts/Vollkorn-Regular.woff2") format("woff2");
+  font-family: "Epilogue";
+  src: url("/fonts/epilogue-webfont.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Vollkorn";
-  src: url("/fonts/Vollkorn-Italic.woff2") format("woff2");
+  font-family: "Epilogue";
+  src: url("/fonts/epilogue-italic-webfont.woff2") format("woff2");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -83,26 +80,27 @@ main {
   font-style: normal;
 }
 
-.vollkorn {
-  font-family: "Vollkorn", serif;
-  font-optical-sizing: auto;
-  font-weight: 700;
+.epilogue {
+  font-family: "Epilogue", sans-serif;
+  font-weight: 400;
   font-style: normal;
 }
 
 :root {
-  --font-plain: "Vollkorn", Helvetica Neue, Helvetica, Arial, sans-serif;
-  --font-special: "Rustic-Printed", Futura, serif;
+  --font-plain: "Epilogue", Helvetica Neue, Helvetica, Arial, sans-serif;
+  --font-special: "Rustic-Printed", serif;
   --font-mono: Menlo, Courier, Courier New, Andale Mono, monospace;
-  --color-background: #cdcfcf;
-  --color-background-muted: #bcbebf;
-  --color-text-muted: #c;
+  --color-background: #f5e4d3;
+  --color-background-muted: #f5e4d3;
+  --color-text-muted: #453545;
   --color-text: #2f202f;
   --color-mid: #808080;
+  --color-title: #466378;
   --color-accent: #cb451f;
   --color-accent-rgb: 203, 69, 31;
-  --color-tag-bg: #b9c5c3;
-  --color-footer: #033d5c;
+  --color-tag-bg: #98afba;
+  --color-footer-background: #033d5c;
+  --color-footer: #f5e4d3;
   --ratio: 1.5;
   --max-width: 850px;
   --s-5: clamp(0.33rem, 0.39rem + -0.29vw, 0.18rem);
@@ -128,14 +126,55 @@ main {
   color-scheme: light dark;
 }
 
+/* Linen texture overlay */
+body {
+  position: relative;
+  min-height: 100vh;
+  background-color: var(--color-background);
+
+  background-repeat: repeat;
+  background-blend-mode: overlay;
+  opacity: 0.9;
+}
+
+main {
+  flex: 1;
+  margin-bottom: 0; /* Remove margin to let the divider handle spacing */
+  position: relative;
+  z-index: 5; /* Ensure main content is above the footer */
+  background-color: var(--color-background);
+
+  background-repeat: repeat;
+  min-height: 50vh; /* Reduced height to allow more space for footer */
+  padding-top: 180px; /* Space for the fixed header - adjust based on actual header height */
+  padding-bottom: 120px; /* Add padding to create space for the sine wave divider */
+  margin-top: 0; /* Reset margin */
+}
+
+/* Ensure content stays above the texture */
+main,
+header,
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure footer doesn't show the linen texture */
+.popup-footer-container {
+  position: relative;
+  z-index: 1;
+  background: var(--color-footer);
+}
+
 /* Class-based dark mode */
 html.dark {
   --color-background-muted: #3c4a3e;
   --color-text: #f6edd9;
   --color-text-muted: #ffdd82;
   --color-footer: #415f57;
-  --color-background: hsl(151, 26%, 23%);
+  --color-background: #55423d;
   --color-accent: #cb451f;
+  --color-title: #98afba;
   --color-tag-bg: #98afba;
 }
 
@@ -165,15 +204,11 @@ header {
   z-index: 50;
   padding-top: var(--s1);
   padding-bottom: var(--s1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: var(--color-background);
-  background-image: url("/assets/header-bg.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
-
-html.dark header {
-  background-image: url("/assets/background-head-dark.jpg");
+  background-image: url("/assets/black-linen-new.png");
+  background-repeat: repeat;
+  border-bottom: 1px solid var(--color-text);
 }
 
 article {
@@ -192,6 +227,7 @@ article li,
 article blockquote,
 article pre {
   font-size: var(--s0);
+  max-width: 60ch;
   line-height: 1.7;
 }
 
@@ -413,8 +449,8 @@ pre {
 
 .site-title {
   font-family: var(--font-special);
-  font-weight: 400;
-  color: var(--color-accent);
+  font-weight: 700;
+  color: var(--color-title);
   font-size: var(--s3);
   line-height: 1.1;
   letter-spacing: 0.05em;
@@ -422,7 +458,7 @@ pre {
 }
 
 .subtitle {
-  font-family: "Vollkorn", serif;
+  font-family: var(--font-plain);
   font-style: italic;
   font-size: var(--s-1);
   color: var(--color-text-muted);
@@ -442,7 +478,8 @@ pre {
 }
 
 .main-nav a,
-.home-socials-list a {
+.home-socials-list a,
+.main-nav .rss-link {
   font-family: "Rustic-Printed", serif;
   color: var(--color-text);
   text-decoration: none;
@@ -451,6 +488,18 @@ pre {
   border: 1px solid var(--color-background);
   transition: all 0.3s ease;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.main-nav .rss-link {
+  padding: 0.5rem;
+}
+
+.main-nav .rss-link svg {
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .main-nav a:hover,
@@ -541,7 +590,7 @@ header.header-full-width {
   width: 100%;
   padding-left: var(--s1);
   padding-right: var(--s1);
-  background-color: transparent;
+  background-color: black;
   margin-top: 0;
   padding-top: var(--s-1);
   padding-bottom: 0;
@@ -842,189 +891,111 @@ details[open] .table-of-contents-summary,
   transform: translateX(0.75rem);
 }
 
-/* PageFind styles */
-.pagefind-backdrop {
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 50;
-  display: flex;
-  height: 100vh;
+/* Footer Styles */
+.footer {
   width: 100%;
-  justify-content: center;
-  padding: 1.5rem;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(2px);
-  opacity: 1;
-  visibility: visible;
-  transition:
-    opacity 0.2s ease,
-    visibility 0.2s ease;
+  padding: 2rem;
+  background-color: #000000;
+  color: VAR(--color-footer);
 }
 
-.pagefind-backdrop.invisible {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.pagefind-container {
-  margin: 0;
-  display: flex;
-  height: fit-content;
-  max-height: 80%;
-  width: 100%;
-  max-width: var(--breakpoint-sm, 640px);
-  flex-direction: column;
-  overflow: auto;
-  border-radius: 0.125rem;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  background-color: #fafafa;
-  padding: 0.5rem 1rem 0.75rem 1rem;
-  box-shadow:
-    0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
-}
-
-.pagefind-instructions {
-  margin-right: 0.5rem;
-  padding-bottom: 0.25rem;
-  padding-top: 1rem;
-  text-align: right;
-  font-size: 0.75rem;
-}
-
-.pagefind-kbd {
-  font-size: 0.75rem;
-}
-
-/* Pop-up Footer styles */
-.popup-footer-container {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-  min-height: 550px;
-  overflow: visible; /* Allow content to overflow */
-  border-radius: 0;
-  box-shadow: none;
-  z-index: 1; /* Below the main content */
-  pointer-events: auto; /* Allow pointer events */
-  transform: translateY(0); /* Ensure it stays at the bottom */
-}
-
-.popup-footer-container::after {
-  content: "";
-  position: absolute;
-  bottom: -100vh; /* Extend well below the viewport */
-  left: 0;
-  width: 100%;
-  height: 100vh; /* Full viewport height extension */
-  background-color: rgba(
-    42,
-    58,
-    56,
-    1
-  ); /* Solid version of the dark color from the gradient */
-  z-index: -1;
-}
-
-.popup-footer-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("/assets/footer-bg-purple.jpg");
-  background-size: cover;
-  background-position: center;
-  z-index: 1;
-  pointer-events: none;
-}
-
-html.dark .popup-footer-background {
-  background-image: url("/assets/footer-bg-dark2.jpg");
-}
-
-.popup-footer-content {
-  position: relative;
-  z-index: 1; /* Same level as the container */
-  height: 100%;
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: var(--s0);
-  padding-top: 200px;
-  padding-bottom: var(--s2);
-  color: white;
-  background-color: transparent; /* Let the background image show through */
-  pointer-events: auto; /* Ensure all content is interactive */
-  user-select: text;
-}
-
-.popup-footer-inner {
-  max-width: 1000px;
+.footer-container {
+  max-width: 1200px;
   margin: 0 auto;
-  width: 100%;
+  padding: 0 2rem;
 }
 
-.popup-footer-title {
-  font-size: var(--s3);
-  margin-bottom: var(--s0);
-  color: var(--color-accent);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.popup-footer-description {
-  font-size: var(--s1);
-  margin-bottom: var(--s1);
-  max-width: 600px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-}
-
-/* Two-column footer layout */
-.popup-footer-columns {
+.footer-content {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--s2);
+  align-items: center;
   justify-content: space-between;
-  width: 100%;
 }
 
-/* Mobile/iPhone specific adjustments */
-@media (max-width: 480px) {
-  .popup-footer-container {
-    height: auto;
-    min-height: 100%;
-  }
-
-  .popup-footer-content {
-    padding-top: 60px;
-    padding-bottom: 40px;
-  }
-
-  .popup-footer-columns {
-    flex-direction: column;
-  }
-
-  .popup-footer-column {
-    min-width: 100%;
-  }
-
-  .popup-footer-column.quote {
-    display: none;
-  }
+.footer-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: flex-start;
 }
 
-.popup-footer-column {
-  flex: 1;
-  min-width: 250px;
-  width: 100%;
+.quote {
+  font-style: italic;
+  padding-right: 2rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.popup-footer-column.quote {
-  text-align: left;
+.quote-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.quote-author {
+  font-weight: 600;
+  color: #ffffff;
+  opacity: 0.8;
+}
+
+.social-section {
+  padding-left: 2rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  color: #ffffff;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.social-link:hover {
+  color: var(--color-primary);
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.social-text {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.social-link:hover .social-text {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 1rem;
+  }
+
+  .footer-columns {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .quote {
+    padding-right: 0;
+    padding-bottom: 2rem;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .social-section {
+    padding-left: 0;
+  }
 }
 
 .writing-quote {
@@ -1036,23 +1007,18 @@ html.dark .popup-footer-background {
 .quote-text {
   font-size: var(--s1);
   font-style: italic;
-  color: var(--color-background);
+  color: var(--color-footer);
   margin-bottom: 0.5rem;
   line-height: 1.6;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
-
-.quote-author {
+b .quote-author {
   font-size: var(--s0);
-  color: var(--color-background);
+  color: var(--color-footer);
   text-align: left;
   margin-top: 0.5rem;
   font-weight: 500;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-}
-
-.popup-footer-column.links {
-  text-align: left;
 }
 
 .footer-yak-image {
@@ -1061,6 +1027,11 @@ html.dark .popup-footer-background {
   width: 100%;
   position: relative;
   z-index: 1;
+}
+
+.footer-copyright {
+  color: var(--color-footer);
+  opacity: 0.7;
 }
 
 .footer-yak-image img {
@@ -1108,38 +1079,6 @@ html.dark .popup-footer-background {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.popup-footer-button {
-  display: inline-block;
-  padding: var(--s-1) var(--s1);
-  background-color: var(--color-tag-bg);
-  color: var(--color-text);
-  border-radius: 2rem;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.popup-footer-button:hover {
-  background-color: var(--color-accent);
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
-}
-
-.popup-footer-copyright {
-  margin-top: var(--s2);
-  font-size: var(--s0);
-  color: var(--color-background-muted);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.popup-footer-copyright a:hover,
-.popup-footer-copyright a:focus-visible {
-  color: var(--color-accent);
-  text-decoration: underline;
-}
-
 /* Regular Footer styles */
 .footer-top-container {
   position: relative;
@@ -1149,20 +1088,6 @@ html.dark .popup-footer-background {
   position: absolute;
   top: -3rem;
   right: 0;
-}
-
-.footer-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.theme-buttons-container {
-  display: none; /* Hide the old theme buttons */
-}
-
-.theme-button {
-  display: none; /* Hide the old theme buttons */
 }
 
 /* Theme Toggle Slider Styles */
@@ -1192,7 +1117,7 @@ html.dark .popup-footer-background {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #637765;
+  background-color: #466378;
   border-radius: 30px;
   transition: 0.4s;
   display: flex;
@@ -1218,11 +1143,13 @@ html.dark .popup-footer-background {
 }
 
 .theme-toggle-checkbox:checked + .theme-toggle-slider {
-  background-color: #293340;
+  background-color: #466378;
+  color: var(--color-text);
 }
 
 .theme-toggle-checkbox:checked + .theme-toggle-slider:before {
   transform: translateX(30px);
+  color: var(--color-text);
   background-color: #fcffd9;
 }
 
@@ -1236,7 +1163,7 @@ html.dark .popup-footer-background {
 }
 
 .theme-toggle-sun {
-  color: #637765;
+  color: black;
   margin-right: 4px;
   opacity: 1;
   transition: opacity 0.3s;
@@ -1247,7 +1174,7 @@ html.dark .popup-footer-background {
 }
 
 .theme-toggle-moon {
-  color: #637765;
+  color: black;
   opacity: 0.5;
   transition: opacity 0.3s;
   z-index: 3;
@@ -1493,7 +1420,7 @@ html.dark {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  margin-bottom: var(--s4);
+  margin-bottom: var(--s1);
 }
 
 .home-section-header {
@@ -1502,7 +1429,7 @@ html.dark {
   align-items: baseline;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: var(--s1);
+  margin-bottom: 0;
 }
 
 /* Stories page styles */
@@ -1705,10 +1632,11 @@ html.dark {
   position: relative;
   display: flex;
   align-items: center;
-  padding: var(--s-1) var(--s0);
-  padding-right: var(--s1);
+  padding: 0.35rem 0.85rem;
+  font-size: 0.875rem;
+  border-radius: 2rem;
+
   background-color: var(--color-tag-bg);
-  border-radius: 1rem;
   text-decoration: none;
   color: var(--color-text);
   transition:
@@ -1889,7 +1817,7 @@ hr {
   border-radius: 1rem;
   padding: 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  margin-bottom: var(--s2);
+  margin-bottom: var(--s1);
   line-height: 1.8;
   font-size: var(--s1);
   font-weight: normal;
@@ -1901,8 +1829,8 @@ hr {
   font-size: var(--s3);
   color: var(--color-accent);
   letter-spacing: 0.03em;
-  margin-top: var(--s3);
-  margin-bottom: var(--s-1);
+  margin-top: var(--s1);
+  margin-bottom: 0px;
   text-transform: uppercase;
 }
 
@@ -2006,12 +1934,10 @@ figcaption {
 
 /* Footer Divider styles */
 .footer-divider {
+  background-color: black;
   position: relative;
   width: 100%;
-  height: 150px;
-  margin-bottom: -2px; /* Push it down to overlap with footer */
   z-index: 3;
-  pointer-events: none; /* Don't block interactions */
   display: block;
 }
 
