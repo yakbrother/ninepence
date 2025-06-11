@@ -1819,7 +1819,7 @@ hr {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   margin-bottom: var(--s1);
   line-height: 1.8;
-  font-size: var(--s1);
+  font-size: var(--01);
   font-weight: normal;
 }
 

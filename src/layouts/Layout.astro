@@ -25,5 +25,15 @@ const { title, description } = Astro.props;
     </main>
     <FooterDivider />
     <Footer />
+    <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"
+    ></script>
+    <script is:inline>
+      window.kofiWidgetOverlay.draw("yakbrother", {
+        type: "floating-chat",
+        "floating-chat.donateButton.text": "Tip Me",
+        "floating-chat.donateButton.background-color": "#d9534f",
+        "floating-chat.donateButton.text-color": "#fff",
+      });
+    </script>
   </body>
 </html>
