@@ -56,4 +56,4 @@ So I’ve been thinking of stories when I used to run, walk, or ride anywhere. I
 
 If you made it this far, thank you for listening to my story. This is the first time I’ve tried to put it into words as a way of facing my new life situation. I’m not giving up on adventures — I still plan to travel, kayak, and play music as well as I can. At a slower speed. _Sober._ Paying a lot more attention to how people see someone who goes by in a wheelchair. Thinking a lot more about accessibility and my place in the world.
 
-I spent my first forty years walking and running. For the next forty, I’ll be rolling towards all the same goals, and a few new ones at that. Allonz-y.
+I spent my first forty years walking and running. For the next forty, I’ll be rolling towards all the same goals, and a few new ones at that. _Allonz-y._
