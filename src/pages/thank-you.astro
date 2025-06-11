@@ -1,0 +1,26 @@
+---
+import Layout from "@layouts/Layout.astro";
+---
+
+<Layout
+  title="Thank You | Mostly True"
+  description="Thanks for signing the guestbook."
+>
+  <main class="thank-you-container">
+    <h1>Thank You!</h1>
+    <p>
+      I'm going to check it over for spam, and then add it to my guestbook. Have
+      a great day!
+    </p>
+    <a href="/guestbook">Return to Guestbook</a>
+  </main>
+</Layout>
+
+<style>
+  .thank-you-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+  }
+</style>
