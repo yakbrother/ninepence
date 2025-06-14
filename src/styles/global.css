@@ -998,16 +998,22 @@ details[open] .table-of-contents-summary,
     padding: 1rem;
   }
 
-  .footer-columns {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-column {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: var(--s2, 1.5rem);
   }
 
   .quote {
-    padding-right: 0;
-    padding-bottom: 2rem;
     border-right: none;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: var(--s2, 1.5rem);
+    padding-right: 0;
   }
 
   .social-section {
