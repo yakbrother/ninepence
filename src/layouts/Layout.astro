@@ -8,15 +8,20 @@ import { SITE } from "@consts";
 type Props = {
   title: string;
   description: string;
+  image?: string;
 };
 
-const { title, description } = Astro.props;
+const { title, description, image } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <Head title={`${title} | ${SITE.TITLE}`} description={description} />
+    <Head
+      title={`${title} | ${SITE.TITLE}`}
+      description={description}
+      image={image}
+    />
   </head>
   <body>
     <Header />
@@ -25,21 +30,37 @@ const { title, description } = Astro.props;
     </main>
     <FooterDivider />
     <Footer />
-    <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"
-    ></script>
     <script is:inline>
-      document.addEventListener("DOMContentLoaded", function () {
-        if (window.kofiWidgetOverlay) {
-          window.kofiWidgetOverlay.draw("yakbrother", {
-            type: "floating-chat",
-            "floating-chat.donateButton.text": "Tip Me",
-            "floating-chat.donateButton.background-color": "#d9534f",
-            "floating-chat.donateButton.text-color": "#fff",
-          });
-        } else {
-          console.error("Ko-fi widget failed to load");
+      // Theme toggle functionality
+      (function () {
+        const themeToggle = document.getElementById("theme-toggle-checkbox");
+        const html = document.documentElement;
+
+        // Check for saved user preference, if any, on load
+        const savedTheme = localStorage.getItem("theme");
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+
+        // Apply the saved theme, or fall back to system preference
+        if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+          html.classList.add("dark");
+          if (themeToggle) themeToggle.checked = true;
         }
-      });
+
+        // Toggle theme when checkbox is clicked
+        if (themeToggle) {
+          themeToggle.addEventListener("change", function () {
+            if (this.checked) {
+              html.classList.add("dark");
+              localStorage.setItem("theme", "dark");
+            } else {
+              html.classList.remove("dark");
+              localStorage.setItem("theme", "light");
+            }
+          });
+        }
+      })();
     </script>
   </body>
 </html>

@@ -1,3 +1,4 @@
+/* ===== RESET & BASE STYLES ===== */
 *,
 :after,
 :before {
@@ -10,44 +11,7 @@
   border: 0 solid;
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  min-height: 100vh;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-
-  min-height: 100vh;
-  justify-content: space-between;
-}
-
-main {
-  flex: 1;
-  margin-bottom: 0;
-  position: relative;
-  background-color: var(--color-background);
-  min-height: 50vh;
-  padding-top: 180px;
-  padding-bottom: 60px;
-  margin-top: 0;
-  background-image: url("/assets/absurdity.png");
-}
-
-/* Footer container */
-.popup-footer-container {
-  position: relative;
-  background-color: var(--color-background);
-  padding: 2rem 0;
-}
-
-/* Font declarations */
-
+/* ===== TYPOGRAPHY ===== */
 @font-face {
   font-family: "Rustic-Printed";
   src: url("/fonts/bygonest_rustic_bold-webfont.woff2") format("woff2");
@@ -72,24 +36,14 @@ main {
   font-display: swap;
 }
 
-/* Font classes */
-.wayfarer {
-  font-family: "Rustic-Printed", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.epilogue {
-  font-family: "Epilogue", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
+/* ===== VARIABLES ===== */
 :root {
+  /* Font Families */
   --font-plain: "Epilogue", Helvetica Neue, Helvetica, Arial, sans-serif;
   --font-special: "Rustic-Printed", serif;
   --font-mono: Menlo, Courier, Courier New, Andale Mono, monospace;
+  
+  /* Colors */
   --color-background: #f5e4d3;
   --color-background-muted: #f5e4d3;
   --color-text-muted: #453545;
@@ -101,8 +55,12 @@ main {
   --color-tag-bg: #98afba;
   --color-footer-background: #033d5c;
   --color-footer: #f5e4d3;
+  
+  /* Typography */
   --ratio: 1.5;
   --max-width: 850px;
+  
+  /* Spacing Scale */
   --s-5: clamp(0.33rem, 0.39rem + -0.29vw, 0.18rem);
   --s-4: clamp(0.41rem, 0.47rem + -0.31vw, 0.25rem);
   --s-3: clamp(0.51rem, 0.57rem + -0.31vw, 0.35rem);
@@ -117,78 +75,31 @@ main {
 
   --border-thin: var(--s-5);
   --border-thick: var(--s-2);
+  
   line-height: var(--ratio);
   font-size: calc(0.333vw + 1em);
   font-family: var(--font-plain);
   background-color: var(--color-background);
-  position: relative;
   color: var(--color-text);
   color-scheme: light dark;
 }
 
-/* Linen texture overlay */
+/* ===== BASE STYLES ===== */
 body {
+  display: flex;
+  flex-direction: column;
   position: relative;
   min-height: 100vh;
+  justify-content: space-between;
   background-color: var(--color-background);
-
   background-repeat: repeat;
   background-blend-mode: overlay;
   opacity: 0.9;
 }
 
-main {
-  flex: 1;
-  margin-bottom: 0; /* Remove margin to let the divider handle spacing */
-  position: relative;
-  z-index: 5; /* Ensure main content is above the footer */
-  background-color: var(--color-background);
-
-  background-repeat: repeat;
-  min-height: 50vh; /* Reduced height to allow more space for footer */
-  padding-top: 180px; /* Space for the fixed header - adjust based on actual header height */
-  padding-bottom: 120px; /* Add padding to create space for the sine wave divider */
-  margin-top: 0; /* Reset margin */
-}
-
-/* Ensure content stays above the texture */
-main,
-header,
-.content-wrapper {
-  position: relative;
-  z-index: 1;
-}
-
-/* Ensure footer doesn't show the linen texture */
-.popup-footer-container {
-  position: relative;
-  z-index: 1;
-  background: var(--color-footer);
-}
-
-/* Class-based dark mode */
-html.dark {
-  --color-background-muted: #3c4a3e;
-  --color-text: #f6edd9;
-  --color-text-muted: #ffdd82;
-  --color-footer: #415f57;
-  --color-background: #55423d;
-  --color-accent: #cb451f;
-  --color-title: #98afba;
-  --color-tag-bg: #98afba;
-}
-
-/* Class-based dark mode toggle */
-/* Dark mode handled through CSS variables */
-
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 10rem;
-}
-
-/* Element styles */
-html {
-  font-family: var(--font-serif);
   overflow-y: auto;
   color-scheme: light;
   scroll-padding-top: 100px;
@@ -1361,8 +1272,21 @@ b .quote-author {
   --callout-error-text: #450a0a;
 }
 
-/* Dark mode callout colors */
+/* Dark mode colors */
 html.dark {
+  --color-background: #1a1a1a;
+  --color-background-muted: #2a2a2a;
+  --color-text-muted: #b0b0b0;
+  --color-text: #f5f5f5;
+  --color-mid: #808080;
+  --color-title: #a8c6d9;
+  --color-accent: #ff6b4d;
+  --color-accent-rgb: 255, 107, 77;
+  --color-tag-bg: #4a5d6b;
+  --color-footer-background: #022a41;
+  --color-footer: #f5f5f5;
+
+  /* Callout colors */
   --callout-default-border: #cb451f;
   --callout-default-bg: rgba(203, 69, 31, 0.2);
   --callout-default-text: #f6edd9;
@@ -1378,6 +1302,22 @@ html.dark {
   --callout-error-border: #ef4444;
   --callout-error-bg: rgba(239, 68, 68, 0.2);
   --callout-error-text: #f6edd9;
+  
+  /* Ensure proper background color in dark mode */
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+/* Ensure html and body take full height and proper colors */
+html {
+  height: 100%;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
 
 .callout-default {
@@ -1882,18 +1822,13 @@ hr {
 .home-socials-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.9rem;
-  font-family: var(--font-special);
+  gap: 0.5rem;
 }
 
 .home-social-item {
   display: flex;
   gap: 0.5rem;
   white-space: nowrap;
-}
-
-.home-social-item a:hover {
-  color: var(--color-accent);
 }
 
 .home-email-item {
